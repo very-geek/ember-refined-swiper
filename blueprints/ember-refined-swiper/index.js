@@ -1,8 +1,7 @@
 module.exports = {
   name: 'ember-refined-swiper',
 
-  normalizeEntiryName() {
-  },
+  normalizeEntiryName() {},
 
   afterInstall() {
     return this.addBowerPackageToProject('swiper');
