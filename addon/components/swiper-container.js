@@ -1,6 +1,6 @@
 import Component from 'ember-component';
 import layout from 'ember-refined-swiper/templates/components/swiper-container';
-// import Swiper from 'swiper';
+import Swiper from 'swiper';
 
 const defaults = [
   {key: 'pagination', value: '.swiper-pagination'},
@@ -18,6 +18,18 @@ export default Component.extend({
     this._super(...arguments);
 
     this._processOptionalCustomClassNames(this.options);
+  },
+
+  didInsertElement() {
+    this._super(...arguments);
+
+    this._swiper = new Swiper(this.element, this.options);
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+
+    this._swiper.destroy(true, true);
   },
 
   /**

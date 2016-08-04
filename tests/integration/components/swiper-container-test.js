@@ -78,7 +78,7 @@ test('it also allows customized class name for extra sturctures', function(asser
             'check for .custom-pagination');
 });
 
-test('even customized class names still have the default class name along with', function(assert) {
+test('even customized class names still have the default class name', function(assert) {
   this.render(hbs`
     {{#swiper-container options=(hash
       prevButton=".custom-button-prev"
@@ -108,4 +108,33 @@ test('even customized class names still have the default class name along with',
     $container.find('.custom-pagination').hasClass('swiper-pagination'),
     'check for .*-pagination'
   );
+});
+
+test('it yields swiper.slide component with customizable structures', function(assert) {
+  this.render(hbs`
+    {{#swiper-container as |swiper|}}
+      {{#swiper.slide class="custom-slide"}}A{{/swiper.slide}}
+      {{#swiper.slide}}B{{/swiper.slide}}
+      {{#swiper.slide}}C{{/swiper.slide}}
+    {{/swiper-container}}
+  `);
+
+  const $component = this.$(':first-child');
+
+  assert.ok($component.find('.swiper-slide').length === 3);
+  assert.ok($component.find('.custom-slide').length === 1);
+});
+
+test('it initializ Swiper properlly', function(assert) {
+  this.render(hbs`
+    {{#swiper-container as |swiper|}}
+      {{#swiper.slide}}A{{/swiper.slide}}
+      {{#swiper.slide}}B{{/swiper.slide}}
+      {{#swiper.slide}}C{{/swiper.slide}}
+    {{/swiper-container}}
+  `);
+
+  const $component = this.$(':first-child');
+
+  assert.ok($component.hasClass('swiper-container-horizontal'));
 });

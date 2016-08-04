@@ -1,7 +1,7 @@
 {
   "name": "ember-refined-swiper",
   "version": "0.0.1",
-  "description": "A refined ember addon to provide touchable, swipeable, carousel-like slides through Swiper.",
+  "description": "An ember addon provides touchable, swipeable, carousel-like slides through Swiper.",
   "directories": {
     "test": "tests"
   },
@@ -12,7 +12,7 @@
   },
   "repository": "very-geek/ember-refined-swiper",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4"
   },
   "author": "nightire <nightire@very-geek.com>",
   "license": "MIT",
@@ -38,6 +38,7 @@
   },
   "keywords": [
     "ember-addon",
+    "component",
     "swiper",
     "carousel",
     "slides"
@@ -48,6 +49,8 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "demoURL": "https://very-geek.github.io/ember-refined-swiper"
+    "versionCompatibility": {
+      "ember": ">=2.0.0"
+    }
   }
 }

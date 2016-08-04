@@ -1,0 +1,34 @@
+<div class="swiper-bg"><img src={{currentBG}}></div>
+
+{{#swiper-container options=(hash
+   slidesPerView=3
+   spaceBetween=100
+   centeredSlides=true
+   grabCursor=true
+   mousewheelControl=true
+   mousewheelForceToAxis=true
+   pagination=".swiper-pagination"
+   paginationClickable=true
+   onInit=(action "initSwiper")
+   onSlideChangeStart=(action "swiperChangeStart")
+   ) as |swiper|}}
+  {{#swiper.slide}}
+    <img src="https://d13yacurqjgara.cloudfront.net/users/179241/screenshots/2835402/attachments/582801/chris-fernandez-a-proper-bear-3.png">
+  {{/swiper.slide}}
+
+  {{#swiper.slide}}
+    <img src="https://d13yacurqjgara.cloudfront.net/users/179241/screenshots/2803345/chris-fernandez-drogon-2.png">
+  {{/swiper.slide}}
+
+  {{#swiper.slide}}
+    <img src="https://d13yacurqjgara.cloudfront.net/users/179241/screenshots/2732558/image.jpeg">
+  {{/swiper.slide}}
+
+  {{#swiper.slide}}
+    <img src="https://d13yacurqjgara.cloudfront.net/users/179241/screenshots/2633954/chris-fernandez-elephant-2.jpg">
+  {{/swiper.slide}}
+
+  {{#swiper.slide}}
+    <img src="https://d13yacurqjgara.cloudfront.net/users/179241/screenshots/2347362/chris-fernandez-alligator1.png">
+  {{/swiper.slide}}
+{{/swiper-container}}

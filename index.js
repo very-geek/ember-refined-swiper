@@ -1,22 +1,25 @@
-/* jshint node: true */
 'use strict';
 
 module.exports = {
   name: 'ember-refined-swiper',
 
   included(app) {
-    this._super.included.apply(this, arguments);
+    this._super.included && this._super.included.apply(this, arguments);
+    this.app = app;
 
-    const addonOptions = app.options['ember-refined-swiper'];
+    while (app.app) app = app.app;
 
-    if (addonOptions && addonOptions.vanilla) {
-      this.app.import(app.bowerDirectory + '/Swiper/dist/css/swiper.css');
-      this.app.import(app.bowerDirectory + '/Swiper/dist/js/swiper.min.js');
+    const bowerDir = app.bowerDirectory;
+    const options = app.options['ember-refined-swiper'];
+
+    app.import(bowerDir + '/Swiper/dist/css/swiper.css');
+
+    if (options && options.vanilla) {
+      app.import(bowerDir + '/Swiper/dist/js/swiper.min.js');
     } else {
-      this.app.import(app.bowerDirectory + '/Swiper/dist/css/swiper.min.css');
-      this.app.import(app.bowerDirectory + '/Swiper/dist/js/swiper.jquery.umd.min.js');
+      app.import(bowerDir + '/Swiper/dist/js/swiper.jquery.umd.min.js');
     }
 
-    this.app.import('vendor/shims/swiper.js')
+    app.import('vendor/shims/swiper.js')
   }
 };
