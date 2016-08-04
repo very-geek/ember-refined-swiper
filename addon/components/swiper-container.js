@@ -1,5 +1,5 @@
-import Ember from 'ember';
-import layout from '../templates/components/swiper-container';
+import Component from 'ember-component';
+import layout from 'ember-refined-swiper/templates/components/swiper-container';
 // import Swiper from 'swiper';
 
 const defaults = [
@@ -9,7 +9,7 @@ const defaults = [
   {key: 'scrollbar', value: '.swiper-scrollbar'}
 ];
 
-export default Ember.Component.extend({
+export default Component.extend({
   layout,
 
   classNames: ['swiper-container'],
@@ -17,12 +17,10 @@ export default Ember.Component.extend({
   didReceiveAttrs() {
     this._super(...arguments);
 
-    if (this.attrs.options) {
-      this._processOptionalCustomClassNames(this.attrs.options);
-    }
+    this._processOptionalCustomClassNames(this.options);
   },
 
-  /*
+  /**
    * process customized class names for prev/next buttons pagination and
    * scrollbar
    *
@@ -31,15 +29,13 @@ export default Ember.Component.extend({
   _processOptionalCustomClassNames(options) {
     defaults.forEach(option => {
       if (options && options[option.key]) {
-
         if (options[option.key] === option.value) {
-          this.set(`${option.key}ClassName`, option.value.slice(1))
-        }
-        else {
+          this.set(`${option.key}ClassName`, option.value.slice(1));
+        } else {
           this.set(`${option.key}ClassName`,
-            [option.value.slice(1), options[option.key].slice(1)].join(' '))
+                   [option.value.slice(1), options[option.key].slice(1)].join(' '));
         }
       }
-    })
+    });
   }
 });

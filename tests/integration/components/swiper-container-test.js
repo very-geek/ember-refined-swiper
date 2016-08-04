@@ -5,7 +5,7 @@ moduleForComponent('swiper-container',
                    'Integration | Component | swiper-container',
                    { integration: true });
 
-test('it doesn\' allow inline rendering', function(assert) {
+test('it doesn\'t allow inline rendering', function(assert) {
   this.render(hbs`{{swiper-container}}`);
 
   assert.equal(this.$().text().trim(),

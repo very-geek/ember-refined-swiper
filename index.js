@@ -7,9 +7,9 @@ module.exports = {
   included(app) {
     this._super.included.apply(this, arguments);
 
-    const swiperOptions = app.options['ember-refined-swiper'];
+    const addonOptions = app.options['ember-refined-swiper'];
 
-    if (swiperOptions && swiperOptions.vanilla) {
+    if (addonOptions && addonOptions.vanilla) {
       this.app.import(app.bowerDirectory + '/Swiper/dist/css/swiper.css');
       this.app.import(app.bowerDirectory + '/Swiper/dist/js/swiper.min.js');
     } else {
