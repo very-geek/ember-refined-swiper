@@ -1,6 +1,6 @@
 {
   "name": "ember-refined-swiper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An ember addon provides touchable, swipeable, carousel-like slides through Swiper.",
   "directories": {
     "test": "tests"
