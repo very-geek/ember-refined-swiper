@@ -1,4 +1,5 @@
 import Component from 'ember-component';
+import { scheduleOnce } from 'ember-runloop';
 import layout from 'ember-refined-swiper/templates/components/swiper-container';
 import Swiper from 'swiper';
 
@@ -23,7 +24,9 @@ export default Component.extend({
   didInsertElement() {
     this._super(...arguments);
 
-    this._swiper = new Swiper(this.element, this.options);
+    scheduleOnce('afterRender', this, () => {
+      this._swiper = new Swiper(this.element, this.options);
+    });
   },
 
   willDestroyElement() {
